@@ -1,9 +1,9 @@
-import demonstration as demo
+from xarray_cube import __author__, __version__
 
 
 def test_author():
-    assert demo.__author__ == "Akio Taniguchi"
+    assert __author__ == "Akio Taniguchi"
 
 
 def test_version():
-    assert demo.__version__ == "0.2.0"
+    assert __version__ == "0.1.0"
