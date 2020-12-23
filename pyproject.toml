@@ -1,12 +1,15 @@
 [tool.poetry]
-name = "demonstration"
-version = "0.2.0"
-description = "Demo package for learning Python development"
-authors = ["Akio Taniguchi <taniguchi@a.phys.nagoya-u.ac.jp>"]
+name = "xarray-cube"
+version = "0.1.0"
+description = "xarray extension for spectral cube analysis"
+authors = [
+    "Akio Taniguchi <taniguchi@a.phys.nagoya-u.ac.jp>",
+    "Rin Yamada <yamada@a.phys.nagoya-u.ac.jp>",
+]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/astropenguin/python-package-template/"
-documentation = "https://astropenguin.github.io/python-package-template/"
+homepage = "https://github.com/a-lab-nagoya/xarray-cube/"
+documentation = "https://a-lab-nagoya.github.io/xarray-cube/"
 
 [tool.poetry.dependencies]
 python = "^3.6"
