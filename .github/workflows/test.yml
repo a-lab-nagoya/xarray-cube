@@ -33,4 +33,4 @@ jobs:
       - name: Test by pytest
         run : poetry run pytest -v tests
       - name: Build docs
-        run: poetry run scripts/docs
+        run: poetry run docs/build
