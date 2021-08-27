@@ -1,3 +1,6 @@
+__all__ = ["Cube"]
+
+
 # standard library
 from dataclasses import dataclass
 from typing import Any, Tuple
@@ -5,7 +8,7 @@ from typing import Any, Tuple
 
 # dependencies
 from typing_extensions import Literal
-from xarray_dataclasses import Attr, Data
+from xarray_dataclasses import AsDataArray, Attr, Coordof, Data
 
 
 # type hints
@@ -43,3 +46,13 @@ class SAxis:
     long_name: Attr[str] = "Spectral axis"
     standard_name: Attr[str] = "S axis"
     units: Attr[str] = "pixel"
+
+
+@dataclass
+class Cube(AsDataArray):
+    """DataArray specs of spectral cube."""
+
+    data: Data[Tuple[X, Y, S], Any]
+    x: Coordof[XAxis] = 0
+    y: Coordof[YAxis] = 0
+    s: Coordof[SAxis] = 0
