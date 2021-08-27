@@ -8,7 +8,7 @@ from typing import Any, Tuple
 
 # dependencies
 from typing_extensions import Literal
-from xarray_dataclasses import AsDataArray, Attr, Coordof, Data
+from xarray_dataclasses import AsDataArray, Attr, Coord, Coordof, Data, Name
 
 
 # constants
@@ -58,6 +58,8 @@ class Cube(AsDataArray):
     """DataArray specs of spectral cube."""
 
     data: Data[Tuple[X, Y, S], Any]
+    header: Coord[Tuple[()], str] = DEFAULT_STR
     x: Coordof[XAxis] = DEFAULT_INT
     y: Coordof[YAxis] = DEFAULT_INT
     s: Coordof[SAxis] = DEFAULT_INT
+    name: Name[str] = "Cube"
