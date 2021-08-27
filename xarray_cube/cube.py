@@ -27,7 +27,7 @@ S = Literal["s"]
 # dataclasses
 @dataclass
 class XAxis:
-    """DataArray specs of longitude axis."""
+    """Pixel coordinate of the longitude axis."""
 
     data: Data[X, int] = DEFAULT_INT
     long_name: Attr[str] = "Longitude axis"
@@ -37,7 +37,7 @@ class XAxis:
 
 @dataclass
 class YAxis:
-    """DataArray specs of latitude axis."""
+    """Pixel coordinate of the latitude axis."""
 
     data: Data[Y, int] = DEFAULT_INT
     long_name: Attr[str] = "Latitude axis"
@@ -47,7 +47,7 @@ class YAxis:
 
 @dataclass
 class SAxis:
-    """DataArray specs of spectral axis."""
+    """Pixel coordinate of the spectral axis."""
 
     data: Data[S, int] = DEFAULT_INT
     long_name: Attr[str] = "Spectral axis"
@@ -57,16 +57,28 @@ class SAxis:
 
 @dataclass
 class Cube(AsDataArray):
-    """DataArray specs of spectral cube."""
+    """Representation of spectral cubes in xarray."""
 
     data: Data[Tuple[X, Y, S], Any]
+    """Data of an HDU as a three-dimensional array."""
+
     header: Coord[Tuple[()], str] = DEFAULT_STR
+    """Header of an HDU as a string."""
+
     x: Coordof[XAxis] = DEFAULT_INT
+    """Pixel coordinate of the longitude axis."""
+
     y: Coordof[YAxis] = DEFAULT_INT
+    """Pixel coordinate of the latitude axis."""
+
     s: Coordof[SAxis] = DEFAULT_INT
+    """Pixel coordinate of the spectral axis."""
+
     name: Name[str] = "Cube"
+    """Name of a DataArray object."""
 
     def __post_init__(self):
+        """Initialize coordinates if default values are given."""
         shape = np.shape(self.data)  # type: ignore
 
         if len(shape) != 3:
