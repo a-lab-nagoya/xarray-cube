@@ -14,6 +14,7 @@ from xarray_dataclasses import AsDataArray, Attr, Coord, Coordof, Data, Name
 
 
 # constants
+CUBE_NDIM = 3
 DEFAULT_INT = 0
 DEFAULT_STR = ""
 
@@ -81,7 +82,7 @@ class Cube(AsDataArray):
         """Initialize coordinates if default values are given."""
         shape = np.shape(self.data)  # type: ignore
 
-        if len(shape) != 3:
+        if len(shape) != CUBE_NDIM:
             raise ValueError("Data must have three dimensions.")
 
         if self.header == DEFAULT_STR:
