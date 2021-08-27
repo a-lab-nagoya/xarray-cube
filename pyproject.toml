@@ -12,7 +12,7 @@ homepage = "https://github.com/a-lab-nagoya/xarray-cube/"
 documentation = "https://a-lab-nagoya.github.io/xarray-cube/"
 
 [tool.poetry.dependencies]
-python = ">= 3.7, < 3.9"
+python = ">= 3.7, < 3.10"
 astropy = "^4.3"
 numpy = "^1.19"
 typing-extensions = "^3.7"
