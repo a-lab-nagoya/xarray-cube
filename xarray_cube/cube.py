@@ -7,6 +7,8 @@ from typing import Any, Tuple
 
 
 # dependencies
+import numpy as np
+from astropy.io.fits import ImageHDU
 from typing_extensions import Literal
 from xarray_dataclasses import AsDataArray, Attr, Coord, Coordof, Data, Name
 
@@ -63,3 +65,15 @@ class Cube(AsDataArray):
     y: Coordof[YAxis] = DEFAULT_INT
     s: Coordof[SAxis] = DEFAULT_INT
     name: Name[str] = "Cube"
+
+    def __post_init__(self):
+        shape = np.shape(self.data)  # type: ignore
+
+        if len(shape) != 3:
+            raise ValueError("Data must have three dimensions.")
+
+        if self.header == DEFAULT_STR:
+            self.header = ImageHDU(self.data).header.tostring()
+
+        if self.x == self.y == self.s == DEFAULT_INT:
+            self.x, self.y, self.s = map(np.arange, shape)
