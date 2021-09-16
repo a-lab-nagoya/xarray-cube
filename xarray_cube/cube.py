@@ -20,19 +20,19 @@ DEFAULT_STR = ""
 
 
 # type hints
-X = Literal["x"]
-Y = Literal["y"]
 S = Literal["s"]
+Y = Literal["y"]
+X = Literal["x"]
 
 
 # dataclasses
 @dataclass
-class XAxis:
-    """Pixel coordinate of the longitude axis."""
+class SAxis:
+    """Pixel coordinate of the spectral axis."""
 
-    data: Data[X, int] = DEFAULT_INT
-    long_name: Attr[str] = "Longitude axis"
-    standard_name: Attr[str] = "X axis"
+    data: Data[S, int] = DEFAULT_INT
+    long_name: Attr[str] = "Spectral axis"
+    standard_name: Attr[str] = "S axis"
     units: Attr[str] = "pixel"
 
 
@@ -47,12 +47,12 @@ class YAxis:
 
 
 @dataclass
-class SAxis:
-    """Pixel coordinate of the spectral axis."""
+class XAxis:
+    """Pixel coordinate of the longitude axis."""
 
-    data: Data[S, int] = DEFAULT_INT
-    long_name: Attr[str] = "Spectral axis"
-    standard_name: Attr[str] = "S axis"
+    data: Data[X, int] = DEFAULT_INT
+    long_name: Attr[str] = "Longitude axis"
+    standard_name: Attr[str] = "X axis"
     units: Attr[str] = "pixel"
 
 
@@ -60,20 +60,20 @@ class SAxis:
 class Cube(AsDataArray):
     """Representation of spectral cubes in xarray."""
 
-    data: Data[Tuple[X, Y, S], Any]
+    data: Data[Tuple[S, Y, X], Any]
     """Data of an HDU as a three-dimensional array."""
 
     header: Coord[Tuple[()], str] = DEFAULT_STR
     """Header of an HDU as a string."""
 
-    x: Coordof[XAxis] = DEFAULT_INT
-    """Pixel coordinate of the longitude axis."""
+    s: Coordof[SAxis] = DEFAULT_INT
+    """Pixel coordinate of the spectral axis."""
 
     y: Coordof[YAxis] = DEFAULT_INT
     """Pixel coordinate of the latitude axis."""
 
-    s: Coordof[SAxis] = DEFAULT_INT
-    """Pixel coordinate of the spectral axis."""
+    x: Coordof[XAxis] = DEFAULT_INT
+    """Pixel coordinate of the longitude axis."""
 
     name: Name[str] = "Cube"
     """Name of a DataArray object."""
@@ -88,5 +88,5 @@ class Cube(AsDataArray):
         if self.header == DEFAULT_STR:
             self.header = ImageHDU(self.data).header.tostring()
 
-        if self.x == self.y == self.s == DEFAULT_INT:
-            self.x, self.y, self.s = map(np.arange, shape)
+        if self.s == self.y == self.x == DEFAULT_INT:
+            self.s, self.y, self.x = map(np.arange, shape)
