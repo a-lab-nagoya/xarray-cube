@@ -8,7 +8,7 @@ from typing import Any, Tuple
 
 # dependencies
 import numpy as np
-from astropy.io.fits import ImageHDU
+from astropy.io.fits import Header, ImageHDU
 from typing_extensions import Literal
 from xarray_dataclasses import AsDataArray, Attr, Coord, Coordof, Data, Name
 
@@ -17,6 +17,7 @@ from xarray_dataclasses import AsDataArray, Attr, Coord, Coordof, Data, Name
 CUBE_NDIM = 3
 DEFAULT_INT = 0
 DEFAULT_STR = ""
+UNIT_KEYWORD = "BUNIT"
 
 
 # type hints
@@ -64,7 +65,9 @@ class Cube(AsDataArray):
     """Data of an HDU as a three-dimensional array."""
 
     header: Coord[Tuple[()], str] = DEFAULT_STR
-    """Header of an HDU as a string."""
+
+    units: Attr[str] = DEFAULT_STR
+    """Cube units. Defaults to BUNIT in the header."""
 
     s: Coordof[SAxis] = DEFAULT_INT
     """Pixel coordinate of the spectral axis."""
@@ -87,6 +90,11 @@ class Cube(AsDataArray):
 
         if self.header == DEFAULT_STR:
             self.header = ImageHDU(self.data).header.tostring()
+
+        header = Header.fromstring(self.header)
+
+        if self.units == DEFAULT_STR:
+            self.units = str(header.get(UNIT_KEYWORD, DEFAULT_STR))
 
         if self.s == self.y == self.x == DEFAULT_INT:
             self.s, self.y, self.x = map(np.arange, shape)
