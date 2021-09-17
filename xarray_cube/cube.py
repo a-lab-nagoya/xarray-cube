@@ -17,6 +17,7 @@ from xarray_dataclasses import AsDataArray, Attr, Coord, Coordof, Data, Name
 CUBE_NDIM = 3
 DEFAULT_INT = 0
 DEFAULT_STR = ""
+TYPE_KEYWORD = "BTYPE"
 UNIT_KEYWORD = "BUNIT"
 
 
@@ -66,6 +67,9 @@ class Cube(AsDataArray):
 
     header: Coord[Tuple[()], str] = DEFAULT_STR
 
+    type: Name[str] = DEFAULT_STR
+    """Cube type. Defaults to BTYPE in the header."""
+
     units: Attr[str] = DEFAULT_STR
     """Cube units. Defaults to BUNIT in the header."""
 
@@ -78,9 +82,6 @@ class Cube(AsDataArray):
     x: Coordof[XAxis] = DEFAULT_INT
     """Pixel coordinate of the longitude axis."""
 
-    name: Name[str] = "Cube"
-    """Name of a DataArray object."""
-
     def __post_init__(self):
         """Initialize coordinates if default values are given."""
         shape = np.shape(self.data)  # type: ignore
@@ -92,6 +93,9 @@ class Cube(AsDataArray):
             self.header = ImageHDU(self.data).header.tostring()
 
         header = Header.fromstring(self.header)
+
+        if self.type == DEFAULT_STR:
+            self.type = str(header.get(TYPE_KEYWORD, DEFAULT_STR))
 
         if self.units == DEFAULT_STR:
             self.units = str(header.get(UNIT_KEYWORD, DEFAULT_STR))
