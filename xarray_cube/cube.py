@@ -32,7 +32,7 @@ class SAxis:
 
     data: Data[S, int] = DEFAULT_INT
     long_name: Attr[str] = "Spectral axis"
-    standard_name: Attr[str] = "S axis"
+    short_name: Attr[str] = "S axis"
     units: Attr[str] = "pixel"
 
 
@@ -42,7 +42,7 @@ class YAxis:
 
     data: Data[Y, int] = DEFAULT_INT
     long_name: Attr[str] = "Latitude axis"
-    standard_name: Attr[str] = "Y axis"
+    short_name: Attr[str] = "Y axis"
     units: Attr[str] = "pixel"
 
 
@@ -52,7 +52,7 @@ class XAxis:
 
     data: Data[X, int] = DEFAULT_INT
     long_name: Attr[str] = "Longitude axis"
-    standard_name: Attr[str] = "X axis"
+    short_name: Attr[str] = "X axis"
     units: Attr[str] = "pixel"
 
 
