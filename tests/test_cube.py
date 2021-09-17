@@ -15,8 +15,8 @@ DATA_DIR = Path("data")
 
 
 # test data
-cube_netcdf = xr.open_dataarray(DATA_DIR / "cube-ones-3x3x3.nc")
-cube_runtime = Cube.ones([3, 3, 3])
+cube_netcdf = xr.open_dataarray(DATA_DIR / "cube-ones-5x4x3.nc")
+cube_runtime = Cube.ones([5, 4, 3], type="Intensity", units="Jy/beam")
 
 
 # test functions
