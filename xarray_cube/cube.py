@@ -60,12 +60,13 @@ class XAxis:
 
 @dataclass
 class Cube(AsDataArray):
-    """Representation of spectral cubes in xarray."""
+    """Spectral cube in astronomy."""
 
     data: Data[Tuple[S, Y, X], Any]
-    """Data of an HDU as a three-dimensional array."""
+    """Cube data as a three-dimensional array."""
 
     header: Coord[Tuple[()], str] = DEFAULT_STR
+    """Cube header. Defaults to an empty FITS header."""
 
     type: Name[str] = DEFAULT_STR
     """Cube type. Defaults to BTYPE in the header."""
