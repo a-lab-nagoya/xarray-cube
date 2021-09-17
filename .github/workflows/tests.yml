@@ -16,7 +16,7 @@ jobs:
       matrix:
         python-version: [3.7, 3.8, 3.9]
     env:
-      TESTED_DIRS: docs tests xarray_dataclasses
+      TESTED_DIRS: docs tests xarray_cube
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python ${{ matrix.python-version }}
