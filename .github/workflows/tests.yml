@@ -1,4 +1,4 @@
-name: Test
+name: Tests
 
 on:
   push:
@@ -10,11 +10,13 @@ on:
 
 jobs:
   job:
-    name: Test
+    name: Test (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.7, 3.8, 3.9]
+    env:
+      TESTED_DIRS: docs tests xarray_dataclasses
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python ${{ matrix.python-version }}
@@ -26,11 +28,11 @@ jobs:
           sudo apt install pandoc
           pip install poetry
           poetry install
-      - name: Lint by Flake8
-        run: poetry run flake8 docs tests xarray_cube
-      - name: Format by Black
-        run: poetry run black --check docs tests xarray_cube
-      - name: Test by pytest
+      - name: Test code format (Black)
+        run: poetry run black --check ${TESTED_DIRS}
+      - name: Test code style (Flake8)
+        run: poetry run flake8 ${TESTED_DIRS}
+      - name: Test package (pytest)
         run : poetry run pytest -v tests
-      - name: Build docs
+      - name: Test docs building (Sphinx)
         run: poetry run docs/build
