@@ -17,6 +17,8 @@ astropy = "^4.3"
 numpy = "^1.19"
 typing-extensions = "^3.10"
 xarray-dataclasses = "^0.5"
+spectral-cube = ">= 0.6, < 0.7"
+xarray = ">=0.15, <1.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.9b"
