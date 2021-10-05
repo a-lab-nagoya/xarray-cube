@@ -5,6 +5,7 @@ __version__ = "0.1.1"
 
 # submodules
 from . import cube
+from . import convert
 
 
 # aliases
