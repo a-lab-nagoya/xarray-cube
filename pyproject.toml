@@ -5,6 +5,7 @@ description = "xarray extension for spectral cube analysis"
 authors = [
     "Akio Taniguchi <taniguchi@a.phys.nagoya-u.ac.jp>",
     "Rin Yamada <yamada@a.phys.nagoya-u.ac.jp>",
+    "Fumika Demachi <f.demachi@a.phys.nagoya-u.ac.jp>"
 ]
 license = "MIT"
 readme = "README.md"
@@ -15,10 +16,10 @@ documentation = "https://a-lab-nagoya.github.io/xarray-cube/"
 python = ">=3.7, <3.10"
 astropy = "^4.3"
 numpy = "^1.19"
+spectral-cube = ">=0.6, <0.7"
 typing-extensions = "^3.10"
-xarray-dataclasses = "^0.5"
-spectral-cube = ">= 0.6, < 0.7"
 xarray = ">=0.15, <1.0"
+xarray-dataclasses = "^0.5"
 
 [tool.poetry.dev-dependencies]
 black = "^21.9b"
