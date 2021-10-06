@@ -1,5 +1,5 @@
-import xarray as xr
 import spectral_cube as sc
+import xarray as xr
 
 
 def spectralcube2xarray(cube: sc.SpectralCube) -> xr.DataArray:
