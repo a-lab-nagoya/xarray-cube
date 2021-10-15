@@ -144,3 +144,10 @@ dmypy.json
 cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+
+# vscode
+.vscode/
+*.code-workspace
+
+# Mac OS
+.DS_Store
