@@ -1,5 +1,7 @@
+from astropy.io import fits
 import spectral_cube as sc
 import xarray as xr
+
 from .cube import Cube
 
 
@@ -15,4 +17,9 @@ def spectralcube2xarray(cube: sc.SpectralCube) -> xr.DataArray:
 
 def xarray2spectralcube(da: xr.DataArray) -> sc.SpectralCube:
     """Convert a DataArray object to a SpectralCube."""
-    pass
+    # header = da.get_header() みたいな感じで取り出したい？
+    # data = da.data
+
+    # hdu = fits.PrimaryHDU(data, header)
+    # cube = sc.SpectralCube.read(hdu)
+    return cube
