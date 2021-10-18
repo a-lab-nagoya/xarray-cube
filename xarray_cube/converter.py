@@ -6,15 +6,15 @@ from .cube import Cube
 def spectralcube2xarray(cube: sc.SpectralCube) -> xr.DataArray:
     """Convert a SpectralCube to a DataArray object."""
 
-    DataCube = Cube.new(
+    data_cube = Cube.new(
         data=cube.hdu.data,
         header=cube.hdu.header,
         Name=cube.hdu.header["BTYPE"],
         units=cube.hdu.header["BUNIT"],
     )
-    return DataCube
+    return data_cube
 
 
-def xarray2spectralcube(data: xr.DataArray) -> sc.SpectralCube:
+def xarray2spectralcube(da: xr.DataArray) -> sc.SpectralCube:
     """Convert a DataArray object to a SpectralCube."""
     pass
