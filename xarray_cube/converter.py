@@ -22,4 +22,5 @@ def xarray2spectralcube(da: xr.DataArray) -> sc.SpectralCube:
 
     # hdu = fits.PrimaryHDU(data, header)
     # cube = sc.SpectralCube.read(hdu)
-    return cube
+    # return cube
+    pass
