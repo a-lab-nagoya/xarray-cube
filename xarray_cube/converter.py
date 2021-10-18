@@ -9,8 +9,6 @@ def spectralcube2xarray(cube: sc.SpectralCube) -> xr.DataArray:
     data_cube = Cube.new(
         data=cube.hdu.data,
         header=cube.hdu.header,
-        type=cube.hdu.header["BTYPE"],
-        units=cube.hdu.header["BUNIT"],
     )
     return data_cube
 
