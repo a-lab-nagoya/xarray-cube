@@ -3,7 +3,7 @@ from pathlib import Path
 from astropy.io import fits
 import spectral_cube as sc
 
-from xarray_cube import converter, Cube
+from xarray_cube import Cube  # , converter
 
 DATA_DIR = Path("data")
 
