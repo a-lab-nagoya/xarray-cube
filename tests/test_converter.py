@@ -7,7 +7,7 @@ from xarray_cube import Cube  # , converter
 
 DATA_DIR = Path("data")
 
-hdu = fits.open(DATA_DIR / "GMC-8.spw16.12CO.7m.cube.pbcor.fits")
+hdu = fits.open(DATA_DIR / "GMC-8.spw16.12CO.7m.cube.pbcor.fits")[0]
 expected_data_array = Cube(hdu.data, hdu.header.tostring())
 expected_sc_cube = sc.SpectralCube(hdu)
 
