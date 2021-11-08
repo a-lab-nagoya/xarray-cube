@@ -17,10 +17,8 @@ def spectralcube2xarray(cube: sc.SpectralCube) -> xr.DataArray:
 
 def xarray2spectralcube(da: xr.DataArray) -> sc.SpectralCube:
     """Convert a DataArray object to a SpectralCube."""
-    # header = da.get_header() みたいな感じで取り出したい？
-    # data = da.data
+    header = fits.Header.fromstring(da.header.item())
+    data = da.values
 
-    # hdu = fits.PrimaryHDU(data, header)
-    # cube = sc.SpectralCube.read(hdu)
-    # return cube
-    pass
+    cube = sc.SpectralCube(fits.imageHDU(data, header))
+    return cube
