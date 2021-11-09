@@ -10,7 +10,7 @@ def spectralcube2xarray(cube: sc.SpectralCube) -> xr.DataArray:
 
     data_cube = Cube.new(
         data=cube.hdu.data,
-        header=cube.hdu.header,
+        header=cube.hdu.header.to_string(),
     )
     return data_cube
 
@@ -20,5 +20,5 @@ def xarray2spectralcube(da: xr.DataArray) -> sc.SpectralCube:
     header = fits.Header.fromstring(da.header.item())
     data = da.values
 
-    cube = sc.SpectralCube(fits.imageHDU(data, header))
+    cube = sc.SpectralCube.read(fits.imageHDU(data, header))
     return cube
