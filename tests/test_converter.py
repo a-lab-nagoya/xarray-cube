@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from astropy.io import fits
-import spectral_cube as sc
 import numpy as np
+import spectral_cube as sc
+from astropy.io import fits
 
 from xarray_cube import Cube, converter
 
