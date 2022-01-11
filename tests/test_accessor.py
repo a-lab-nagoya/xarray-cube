@@ -1,7 +1,5 @@
 from pathlib import Path
-
 from astropy.io import fits
-
 import xarray_cube
 
 DATA_DIR = Path("data")

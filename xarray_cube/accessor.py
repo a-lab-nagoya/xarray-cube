@@ -9,5 +9,5 @@ class CubeAccessor:
 
     @property
     def header(self) -> fits.header.Header:
-        """Return header object of Astropy."""
+        """Convert the header string to a header object."""
         return fits.Header.fromstring(self._obj.header.item())
