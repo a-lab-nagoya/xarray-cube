@@ -25,7 +25,7 @@ jobs:
       - name: Install project dependencies
         run: pip install poetry && poetry install
       - name: Test code's formatting (Black)
-        run: black --check docs tests xarray-cube
+        run: black --check docs tests xarray_cube
       - name: Test code's execution (pytest)
         run : pytest -v tests
       - name: Test docs' building (Sphinx)
