@@ -16,4 +16,4 @@ class CubeAccessor:
     @property
     def wcs(self) -> WCS:
         """Extract wcs"""
-        return WCS(self._obj.cube.header)
+        return WCS(self.header)
