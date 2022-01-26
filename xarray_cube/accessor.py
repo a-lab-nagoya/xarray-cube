@@ -1,6 +1,6 @@
 import xarray as xr
-from astropy.wcs import WCS
 from astropy.io import fits
+from astropy.wcs import WCS
 
 
 @xr.register_dataarray_accessor("cube")
@@ -15,5 +15,5 @@ class CubeAccessor:
 
     @property
     def wcs(self) -> WCS:
-        """Extract wcs"""
+        """Convert the header string to a WCS object"""
         return WCS(self.header)
