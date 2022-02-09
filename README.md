@@ -6,3 +6,9 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?label=License&style=flat-square)](LICENSE)
 
 xarray extension for spectral cube analysis
+
+## Installation
+
+```shell
+pip install xarray-cube
+```
