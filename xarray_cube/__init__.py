@@ -1,5 +1,5 @@
 # type: ignore
-__author__ = "Akio Taniguchi"
+__author__ = "xarray-cube developers"
 __version__ = "0.3.0"
 
 

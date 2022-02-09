@@ -1,6 +1,6 @@
 # Project information
-author = "Akio Taniguchi"
-copyright = "2020-2021, Akio Taniguchi"
+author = "xarray-cube developers"
+copyright = "2020-2022, xarray-cube developers"
 
 
 # General configuration
