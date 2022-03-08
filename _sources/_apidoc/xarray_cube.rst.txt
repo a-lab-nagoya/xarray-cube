@@ -1,0 +1,20 @@
+xarray\_cube package
+====================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   xarray_cube.accessor
+   xarray_cube.converter
+   xarray_cube.cube
+
+Module contents
+---------------
+
+.. automodule:: xarray_cube
+   :members:
+   :undoc-members:
+   :show-inheritance:

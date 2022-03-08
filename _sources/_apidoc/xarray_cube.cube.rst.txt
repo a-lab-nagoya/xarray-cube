@@ -1,0 +1,7 @@
+xarray\_cube.cube module
+========================
+
+.. automodule:: xarray_cube.cube
+   :members:
+   :undoc-members:
+   :show-inheritance:
